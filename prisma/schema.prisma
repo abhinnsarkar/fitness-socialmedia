@@ -7,3 +7,14 @@ datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
+
+model ForumPost {
+    id       String  @id @default(uuid()) // Unique ID for each post
+    content  String // The actual post content
+    parentId String? // Nullable FK to the parent post
+
+    // Self-referencing relation setup
+    // NOT REAL FIELDS IN DB, just for Prisma relations
+    parent   ForumPost?  @relation("PostReplies", fields: [parentId], references: [id])
+    children ForumPost[] @relation("PostReplies") // All posts that replied to this one
+}
