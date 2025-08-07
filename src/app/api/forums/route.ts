@@ -1,22 +1,29 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-// export async function GET() {
-//     const forumPosts = await prisma.forumPost.findMany({
-//         orderBy: {
-//             createdAt: "desc",
-//         },
-//         include: {
-//             children: {
-//                 orderBy: {
-//                     createdAt: "desc",
-//                 },
-//             },
-//         },
-//     });
+export async function GET(req: Request) {
 
-//     return NextResponse.json(forumPosts, { status: 200 });
-// }
+    console.log("GET request received");
+
+    const { searchParams } = new URL(req.url);
+
+    const topLevelOnly = searchParams.get("topLevelOnly") === "true";
+    const sort = searchParams.get("sort") === "asc" ? "asc" : "desc";
+    const limit = 20; // limit for fetching will always be 20 at a time
+    const offsetParam = searchParams.get("offset");
+    let offset = 0;
+    if (offsetParam === null) {
+        return NextResponse.json(
+            { error: "Offset parameter is required." },
+            { status: 400 }
+        );
+    } else {
+        offset = parseInt(offsetParam, 10);
+    }
+
+    
+
+}
 
 export async function POST(req: Request) {
     console.log("POST request received");

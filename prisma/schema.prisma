@@ -9,9 +9,10 @@ datasource db {
 }
 
 model ForumPost {
-    id       String  @id @default(uuid()) // Unique ID for each post
-    content  String // The actual post content
-    parentId String? // Nullable FK to the parent post
+    id        String   @id @default(uuid()) // Unique ID for each post
+    content   String // The actual post content
+    parentId  String? // Nullable FK to the parent post
+    createdAt DateTime @default(now()) // Timestamp for when the post was created to potentially sort posts by date in the future
 
     // Self-referencing relation setup
     // NOT REAL FIELDS IN DB, just for Prisma relations

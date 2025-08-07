@@ -926,18 +926,21 @@ export namespace Prisma {
     id: string | null
     content: string | null
     parentId: string | null
+    createdAt: Date | null
   }
 
   export type ForumPostMaxAggregateOutputType = {
     id: string | null
     content: string | null
     parentId: string | null
+    createdAt: Date | null
   }
 
   export type ForumPostCountAggregateOutputType = {
     id: number
     content: number
     parentId: number
+    createdAt: number
     _all: number
   }
 
@@ -946,18 +949,21 @@ export namespace Prisma {
     id?: true
     content?: true
     parentId?: true
+    createdAt?: true
   }
 
   export type ForumPostMaxAggregateInputType = {
     id?: true
     content?: true
     parentId?: true
+    createdAt?: true
   }
 
   export type ForumPostCountAggregateInputType = {
     id?: true
     content?: true
     parentId?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -1037,6 +1043,7 @@ export namespace Prisma {
     id: string
     content: string
     parentId: string | null
+    createdAt: Date
     _count: ForumPostCountAggregateOutputType | null
     _min: ForumPostMinAggregateOutputType | null
     _max: ForumPostMaxAggregateOutputType | null
@@ -1060,6 +1067,7 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     parentId?: boolean
+    createdAt?: boolean
     parent?: boolean | ForumPost$parentArgs<ExtArgs>
     children?: boolean | ForumPost$childrenArgs<ExtArgs>
     _count?: boolean | ForumPostCountOutputTypeDefaultArgs<ExtArgs>
@@ -1069,6 +1077,7 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     parentId?: boolean
+    createdAt?: boolean
     parent?: boolean | ForumPost$parentArgs<ExtArgs>
   }, ExtArgs["result"]["forumPost"]>
 
@@ -1076,6 +1085,7 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     parentId?: boolean
+    createdAt?: boolean
     parent?: boolean | ForumPost$parentArgs<ExtArgs>
   }, ExtArgs["result"]["forumPost"]>
 
@@ -1083,9 +1093,10 @@ export namespace Prisma {
     id?: boolean
     content?: boolean
     parentId?: boolean
+    createdAt?: boolean
   }
 
-  export type ForumPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "parentId", ExtArgs["result"]["forumPost"]>
+  export type ForumPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "parentId" | "createdAt", ExtArgs["result"]["forumPost"]>
   export type ForumPostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | ForumPost$parentArgs<ExtArgs>
     children?: boolean | ForumPost$childrenArgs<ExtArgs>
@@ -1108,6 +1119,7 @@ export namespace Prisma {
       id: string
       content: string
       parentId: string | null
+      createdAt: Date
     }, ExtArgs["result"]["forumPost"]>
     composites: {}
   }
@@ -1536,6 +1548,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ForumPost", 'String'>
     readonly content: FieldRef<"ForumPost", 'String'>
     readonly parentId: FieldRef<"ForumPost", 'String'>
+    readonly createdAt: FieldRef<"ForumPost", 'DateTime'>
   }
     
 
@@ -2010,7 +2023,8 @@ export namespace Prisma {
   export const ForumPostScalarFieldEnum: {
     id: 'id',
     content: 'content',
-    parentId: 'parentId'
+    parentId: 'parentId',
+    createdAt: 'createdAt'
   };
 
   export type ForumPostScalarFieldEnum = (typeof ForumPostScalarFieldEnum)[keyof typeof ForumPostScalarFieldEnum]
@@ -2060,6 +2074,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -2083,6 +2111,7 @@ export namespace Prisma {
     id?: StringFilter<"ForumPost"> | string
     content?: StringFilter<"ForumPost"> | string
     parentId?: StringNullableFilter<"ForumPost"> | string | null
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
     parent?: XOR<ForumPostNullableScalarRelationFilter, ForumPostWhereInput> | null
     children?: ForumPostListRelationFilter
   }
@@ -2091,6 +2120,7 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     parentId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     parent?: ForumPostOrderByWithRelationInput
     children?: ForumPostOrderByRelationAggregateInput
   }
@@ -2102,6 +2132,7 @@ export namespace Prisma {
     NOT?: ForumPostWhereInput | ForumPostWhereInput[]
     content?: StringFilter<"ForumPost"> | string
     parentId?: StringNullableFilter<"ForumPost"> | string | null
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
     parent?: XOR<ForumPostNullableScalarRelationFilter, ForumPostWhereInput> | null
     children?: ForumPostListRelationFilter
   }, "id">
@@ -2110,6 +2141,7 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     parentId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     _count?: ForumPostCountOrderByAggregateInput
     _max?: ForumPostMaxOrderByAggregateInput
     _min?: ForumPostMinOrderByAggregateInput
@@ -2122,11 +2154,13 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"ForumPost"> | string
     content?: StringWithAggregatesFilter<"ForumPost"> | string
     parentId?: StringNullableWithAggregatesFilter<"ForumPost"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ForumPost"> | Date | string
   }
 
   export type ForumPostCreateInput = {
     id?: string
     content: string
+    createdAt?: Date | string
     parent?: ForumPostCreateNestedOneWithoutChildrenInput
     children?: ForumPostCreateNestedManyWithoutParentInput
   }
@@ -2135,12 +2169,14 @@ export namespace Prisma {
     id?: string
     content: string
     parentId?: string | null
+    createdAt?: Date | string
     children?: ForumPostUncheckedCreateNestedManyWithoutParentInput
   }
 
   export type ForumPostUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ForumPostUpdateOneWithoutChildrenNestedInput
     children?: ForumPostUpdateManyWithoutParentNestedInput
   }
@@ -2149,6 +2185,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: ForumPostUncheckedUpdateManyWithoutParentNestedInput
   }
 
@@ -2156,17 +2193,20 @@ export namespace Prisma {
     id?: string
     content: string
     parentId?: string | null
+    createdAt?: Date | string
   }
 
   export type ForumPostUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ForumPostUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2199,6 +2239,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type ForumPostNullableScalarRelationFilter = {
     is?: ForumPostWhereInput | null
     isNot?: ForumPostWhereInput | null
@@ -2223,18 +2274,21 @@ export namespace Prisma {
     id?: SortOrder
     content?: SortOrder
     parentId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ForumPostMaxOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     parentId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ForumPostMinOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
     parentId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2273,6 +2327,20 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type ForumPostCreateNestedOneWithoutChildrenInput = {
     create?: XOR<ForumPostCreateWithoutChildrenInput, ForumPostUncheckedCreateWithoutChildrenInput>
     connectOrCreate?: ForumPostCreateOrConnectWithoutChildrenInput
@@ -2295,6 +2363,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type ForumPostUpdateOneWithoutChildrenNestedInput = {
@@ -2367,6 +2439,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -2423,9 +2506,24 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type ForumPostCreateWithoutChildrenInput = {
     id?: string
     content: string
+    createdAt?: Date | string
     parent?: ForumPostCreateNestedOneWithoutChildrenInput
   }
 
@@ -2433,6 +2531,7 @@ export namespace Prisma {
     id?: string
     content: string
     parentId?: string | null
+    createdAt?: Date | string
   }
 
   export type ForumPostCreateOrConnectWithoutChildrenInput = {
@@ -2443,12 +2542,14 @@ export namespace Prisma {
   export type ForumPostCreateWithoutParentInput = {
     id?: string
     content: string
+    createdAt?: Date | string
     children?: ForumPostCreateNestedManyWithoutParentInput
   }
 
   export type ForumPostUncheckedCreateWithoutParentInput = {
     id?: string
     content: string
+    createdAt?: Date | string
     children?: ForumPostUncheckedCreateNestedManyWithoutParentInput
   }
 
@@ -2476,6 +2577,7 @@ export namespace Prisma {
   export type ForumPostUpdateWithoutChildrenInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     parent?: ForumPostUpdateOneWithoutChildrenNestedInput
   }
 
@@ -2483,6 +2585,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ForumPostUpsertWithWhereUniqueWithoutParentInput = {
@@ -2508,28 +2611,33 @@ export namespace Prisma {
     id?: StringFilter<"ForumPost"> | string
     content?: StringFilter<"ForumPost"> | string
     parentId?: StringNullableFilter<"ForumPost"> | string | null
+    createdAt?: DateTimeFilter<"ForumPost"> | Date | string
   }
 
   export type ForumPostCreateManyParentInput = {
     id?: string
     content: string
+    createdAt?: Date | string
   }
 
   export type ForumPostUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: ForumPostUpdateManyWithoutParentNestedInput
   }
 
   export type ForumPostUncheckedUpdateWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: ForumPostUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ForumPostUncheckedUpdateManyWithoutParentInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

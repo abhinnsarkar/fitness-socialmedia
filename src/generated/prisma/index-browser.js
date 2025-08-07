@@ -123,7 +123,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.ForumPostScalarFieldEnum = {
   id: 'id',
   content: 'content',
-  parentId: 'parentId'
+  parentId: 'parentId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
