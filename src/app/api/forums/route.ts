@@ -1,8 +1,8 @@
+import { Prisma } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-
     console.log("GET request received");
 
     const { searchParams } = new URL(req.url);
@@ -21,8 +21,25 @@ export async function GET(req: Request) {
         offset = parseInt(offsetParam, 10);
     }
 
-    
+    const queryOptions: Prisma.ForumPostFindManyArgs = {
+        orderBy: { createdAt: sort }, // "asc" or "desc"
+        take: limit, // how many posts to fetch
+        skip: offset, // how many posts to skip
+        include: {
+            children: {
+                orderBy: { createdAt: "asc" }, // always show replies oldest → newest
+            },
+        },
+    };
+    if (topLevelOnly) {
+        // this is SETTING a propoerty of the queryOptions object since its of type Prisma.ForumPostFindManyArgs
+        // Prisma.ForumPostFindManyArgs expects a where clause to filter results and is custom tuned to my specific schema SINCE
+        // this Prisma import was done from my unique generated schemas from the generated folder
+        queryOptions.where = { parentId: null };
+    }
+    const forumPosts = await prisma.forumPost.findMany(queryOptions);
 
+    return NextResponse.json(forumPosts, { status: 200 });
 }
 
 export async function POST(req: Request) {
