@@ -157,6 +157,26 @@
         drop-shadow(0 0 24px rgba(255, 255, 255, 0.9));
 }
 
+.minimal-grow:hover {
+    transform: scale(1.01); /* barely grows compared to glowbox default */
+}
+
+.icon {
+    display: inline-flex; /* keeps icon centered */
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* or a color if you want */
+
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.icon:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1))
+        drop-shadow(0 0 20px rgba(255, 255, 255, 0.9));
+}
+
 .glow-border-b {
     position: relative;
     border-bottom: 10px solid transparent;
